@@ -1,0 +1,45 @@
+library(ENMTools)
+env.files <- list.files(path = "SElayers/", pattern = "bio", full.names = TRUE)
+env <- stack(env.files)
+names(env) <- c("layer.1","layer.2","layer.3","layer.4","layer.5","layer.6","layer.7","layer.8","layer.9","layer.10","layer.11")
+env <- setMinMax(env)
+louisiana <- enmtools.species()
+louisiana$species.name <- "louisiana"
+louisiana$presence.points <- read.csv("input_Maxent_newest_regions_louisiana.csv")[,2:3]
+louisiana$range <- background.raster.buffer(louisiana$presence.points, 50000, mask = env)
+louisiana$background.points <- background.points.buffer(points = louisiana$presence.points, radius = 20000, n = 1000, mask = env[[1]])
+ozark <- enmtools.species()
+ozark$species.name <- "ozark"
+ozark$presence.points <- read.csv("input_Maxent_newest_regions_ozark.csv")[,2:3]
+ozark$range <- background.raster.buffer(ozark$presence.points, 50000, mask = env)
+ozark$background.points <- background.points.buffer(points = ozark$presence.points, radius = 20000, n = 1000, mask = env[[1]])
+ouachita <- enmtools.species()
+ouachita$species.name <- "ouachita"
+ouachita$presence.points <- read.csv("input_Maxent_newest_regions_ouachita.csv")[,2:3]
+ouachita$range <- background.raster.buffer(ouachita$presence.points, 50000, mask = env)
+ouachita$background.points <- background.points.buffer(points = ouachita$presence.points, radius = 20000, n = 1000, mask = env[[1]])
+appalachian <- enmtools.species()
+appalachian$species.name <- "appalachian"
+appalachian$presence.points <- read.csv("input_Maxent_newest_regions_appalachian.csv")[,2:3]
+appalachian$range <- background.raster.buffer(appalachian$presence.points, 50000, mask = env)
+appalachian$background.points <- background.points.buffer(points = appalachian$presence.points, radius = 20000, n = 1000, mask = env[[1]])
+ozark.dm <- enmtools.dm(ozark, env, test.prop = 0.2)
+appalachian.dm <- enmtools.dm(appalachian, env, test.prop = 0.2)
+ouachita.dm <- enmtools.dm(ouachita, env, test.prop = 0.2)
+louisiana.dm <- enmtools.dm(louisiana, env, test.prop = 0.2)
+ozark.bc <- enmtools.bc(ozark, env, test.prop = 0.2)
+appalachian.bc <- enmtools.bc(appalachian, env, test.prop = 0.2)
+ouachita.bc <- enmtools.bc(ouachita, env, test.prop = 0.2)
+louisiana.bc <- enmtools.bc(louisiana, env, test.prop = 0.2)
+ouachita.glm <- enmtools.glm(f = pres ~ layer.1 + layer.2 + layer.3 + layer.4 + layer.5 + layer.6 + layer.7 + layer.8 + layer.9 + layer.10 + layer.11, species = ouachita, env = env, test.prop = 0.2)
+louisiana.glm <- enmtools.glm(f = pres ~ layer.1 + layer.2 + layer.3 + layer.4 + layer.5 + layer.6 + layer.7 + layer.8 + layer.9 + layer.10 + layer.11, species = louisiana, env = env, test.prop = 0.2)
+save(ozark.dm, file = "ozark_dm.rda")
+save(appalachian.dm, file = "appalachian_dm.rda")
+save(ouachita.dm, file = "ouachita_dm.rda")
+save(louisiana.dm, file = "louisiana_dm.rda")
+save(ozark.bc, file = "ozark_bc.rda")
+save(appalachian.bc, file = "appalachian_bc.rda")
+save(ouachita.bc, file = "ouachita_bc.rda")
+save(louisiana.bc, file = "louisiana_bc.rda")
+save(ouachita.glm, file = "ouachita_glm.rda")
+save(louisiana.glm, file = "louisiana_glm.rda")

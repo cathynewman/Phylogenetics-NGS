@@ -1,0 +1,864 @@
+
+R version 3.2.1 (2015-06-18) -- "World-Famous Astronaut"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin10.8.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.66 (6956) x86_64-apple-darwin10.8.0]
+
+[Workspace restored from /Users/Newman/.RData]
+[History restored from /Users/Newman/.Rhistory]
+
+> library(devtools)
+Warning message:
+package ‘devtools’ was built under R version 3.2.5 
+> install_github("danlwarren/ENMTools")
+Downloading GitHub repo danlwarren/ENMTools@master
+from URL https://api.github.com/repos/danlwarren/ENMTools/zipball/master
+Installing ENMTools
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/dismo_1.1-1'
+Content type 'application/x-gzip' length 2258508 bytes (2.2 MB)
+==================================================
+downloaded 2.2 MB
+
+Error: Don't know how to decompress files with extension 1-1
+also installing the dependencies ‘xts’, ‘intervals’, ‘gplots’, ‘zoo’, ‘spacetime’, ‘FNN’, ‘raster’, ‘rJava’, ‘rgdal’, ‘rgeos’, ‘ROCR’, ‘gstat’, ‘randomForest’, ‘kernlab’, ‘maptools’, ‘gbm’
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/xts_0.9-7.tgz'
+Content type 'application/x-gzip' length 625926 bytes (611 KB)
+==================================================
+downloaded 611 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/intervals_0.15.1.tgz'
+Content type 'application/x-gzip' length 605647 bytes (591 KB)
+==================================================
+downloaded 591 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/gplots_3.0.1.tgz'
+Content type 'application/x-gzip' length 509137 bytes (497 KB)
+==================================================
+downloaded 497 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/zoo_1.7-13.tgz'
+Content type 'application/x-gzip' length 884538 bytes (863 KB)
+==================================================
+downloaded 863 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/spacetime_1.1-5.tgz'
+Content type 'application/x-gzip' length 2945265 bytes (2.8 MB)
+==================================================
+downloaded 2.8 MB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/FNN_1.1.tgz'
+Content type 'application/x-gzip' length 104574 bytes (102 KB)
+==================================================
+downloaded 102 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/raster_2.5-8.tgz'
+Content type 'application/x-gzip' length 2825556 bytes (2.7 MB)
+==================================================
+downloaded 2.7 MB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/rJava_0.9-8.tgz'
+Content type 'application/x-gzip' length 602664 bytes (588 KB)
+==================================================
+downloaded 588 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/rgdal_0.9-3.tgz'
+Content type 'application/x-gzip' length 21131632 bytes (20.2 MB)
+==================================================
+downloaded 20.2 MB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/rgeos_0.3-19.tgz'
+Content type 'application/x-gzip' length 5575772 bytes (5.3 MB)
+==================================================
+downloaded 5.3 MB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/ROCR_1.0-7.tgz'
+Content type 'application/x-gzip' length 149682 bytes (146 KB)
+==================================================
+downloaded 146 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/gstat_1.1-3.tgz'
+Content type 'application/x-gzip' length 2756974 bytes (2.6 MB)
+==================================================
+downloaded 2.6 MB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/randomForest_4.6-12.tgz'
+Content type 'application/x-gzip' length 158916 bytes (155 KB)
+==================================================
+downloaded 155 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/kernlab_0.9-24.tgz'
+Content type 'application/x-gzip' length 1740714 bytes (1.7 MB)
+==================================================
+downloaded 1.7 MB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/maptools_0.8-39.tgz'
+Content type 'application/x-gzip' length 1803748 bytes (1.7 MB)
+==================================================
+downloaded 1.7 MB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/gbm_2.1.1.tgz'
+Content type 'application/x-gzip' length 644028 bytes (628 KB)
+==================================================
+downloaded 628 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/dismo_1.1-1.tgz'
+Content type 'application/x-gzip' length 2258508 bytes (2.2 MB)
+==================================================
+downloaded 2.2 MB
+
+
+The downloaded binary packages are in
+	/var/folders/aT/aToXLr9yFry4dXKagzAY8E+++TI/-Tmp-//RtmpL43EX7/downloaded_packages
+> install_github("danlwarren/ENMTools")
+Downloading GitHub repo danlwarren/ENMTools@master
+from URL https://api.github.com/repos/danlwarren/ENMTools/zipball/master
+Installing ENMTools
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/lhs_0.13'
+Content type 'application/x-gzip' length 204710 bytes (199 KB)
+==================================================
+downloaded 199 KB
+
+Error: Don't know how to decompress files with extension 13
+also installing the dependency ‘RUnit’
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/RUnit_0.4.31.tgz'
+Content type 'application/x-gzip' length 224418 bytes (219 KB)
+==================================================
+downloaded 219 KB
+
+trying URL 'http://cran.cnr.Berkeley.edu/bin/macosx/contrib/3.2/lhs_0.13.tgz'
+Content type 'application/x-gzip' length 204710 bytes (199 KB)
+==================================================
+downloaded 199 KB
+
+
+The downloaded binary packages are in
+	/var/folders/aT/aToXLr9yFry4dXKagzAY8E+++TI/-Tmp-//RtmpL43EX7/downloaded_packages
+> install_github("danlwarren/ENMTools")
+Downloading GitHub repo danlwarren/ENMTools@master
+from URL https://api.github.com/repos/danlwarren/ENMTools/zipball/master
+Installing ENMTools
+'/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file --no-environ --no-save  \
+  --no-restore --quiet CMD INSTALL  \
+  '/private/var/folders/aT/aToXLr9yFry4dXKagzAY8E+++TI/-Tmp-/RtmpL43EX7/devtools2906ef3dff2/danlwarren-ENMTools-37411d4'  \
+  --library='/Library/Frameworks/R.framework/Versions/3.2/Resources/library'  \
+  --install-tests 
+
+* installing *source* package ‘ENMTools’ ...
+** R
+** preparing package for lazy loading
+Warning: package ‘dismo’ was built under R version 3.2.5
+Warning: package ‘raster’ was built under R version 3.2.5
+Warning: package ‘sp’ was built under R version 3.2.5
+Warning: package ‘rgeos’ was built under R version 3.2.4
+Warning: package ‘knitr’ was built under R version 3.2.5
+Warning: package ‘ggplot2’ was built under R version 3.2.4
+Warning: package ‘gridExtra’ was built under R version 3.2.4
+Warning: package ‘viridis’ was built under R version 3.2.4
+Warning: package ‘lhs’ was built under R version 3.2.3
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+Warning: package ‘dismo’ was built under R version 3.2.5
+Warning: package ‘raster’ was built under R version 3.2.5
+Warning: package ‘sp’ was built under R version 3.2.5
+Warning: package ‘rgeos’ was built under R version 3.2.4
+Warning: package ‘knitr’ was built under R version 3.2.5
+Warning: package ‘ggplot2’ was built under R version 3.2.4
+Warning: package ‘gridExtra’ was built under R version 3.2.4
+Warning: package ‘viridis’ was built under R version 3.2.4
+Warning: package ‘lhs’ was built under R version 3.2.3
+* DONE (ENMTools)
+> getwd()
+[1] "/Users/Newman"
+> library(ENMTools)
+Loading required package: dismo
+Loading required package: raster
+Loading required package: sp
+Loading required package: rgeos
+rgeos version: 0.3-19, (SVN revision 524)
+ GEOS runtime version: 3.4.2-CAPI-1.8.2 r3921 
+ Linking to sp version: 1.2-2 
+ Polygon checking: TRUE 
+
+Loading required package: knitr
+Loading required package: ggplot2
+Want to understand how all the pieces fit together? Buy the ggplot2 book:
+http://ggplot2.org/book/
+Loading required package: grid
+Loading required package: gridExtra
+Loading required package: viridis
+Loading required package: lhs
+Warning messages:
+1: package ‘dismo’ was built under R version 3.2.5 
+2: package ‘raster’ was built under R version 3.2.5 
+3: package ‘sp’ was built under R version 3.2.5 
+4: package ‘rgeos’ was built under R version 3.2.4 
+5: package ‘knitr’ was built under R version 3.2.5 
+6: package ‘ggplot2’ was built under R version 3.2.4 
+7: package ‘gridExtra’ was built under R version 3.2.4 
+8: package ‘viridis’ was built under R version 3.2.4 
+9: package ‘lhs’ was built under R version 3.2.3 
+> env.files <- list.files(path = "SElayers/", pattern = "bio", full.names = TRUE)
+> env <- stack(env.files)
+> names(env) <- c("layer.1", "layer.2", "layer.3", "layer.4", "layer.5", "layer.6", "layer.7", "layer.8", "layer.9", "layer.10", "layer.11")
+> env <- setMinMax(env)
+> ozark <- enmtools.species(species.name = "ozark", presence.points = read.csv("input_Maxent_newest_regions_ozark.csv")[,2:3])
+> ozark$range <- background.raster.buffer(ozark$presence.points, 50000, mask = 3nv)
+Error: unexpected symbol in "ozark$range <- background.raster.buffer(ozark$presence.points, 50000, mask = 3nv"
+> ozark$range <- background.raster.buffer(ozark$presence.points, 50000, mask = env)
+> ozark$background.points <- background.points.buffer(points = ozark$presence.points, radius = 20000, n = 1000, mask = env[[1]])
+> ozark
+
+
+Range raster: 
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : in memory
+names       : layer.1 
+values      : 1, 1  (min, max)
+
+
+
+Presence points (first ten only): 
+
+| longitude| latitude|
+|---------:|--------:|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+
+
+Background points (first ten only): 
+
+| longitude| latitude|
+|---------:|--------:|
+| -90.61250| 37.70417|
+| -90.49583| 37.47917|
+| -91.40417| 37.65417|
+| -90.99583| 37.92083|
+| -91.27917| 37.78750|
+| -91.57083| 37.72917|
+| -90.68750| 38.47917|
+| -90.94583| 37.12917|
+| -90.06250| 37.55417|
+| -91.49583| 37.72917|
+
+
+Species name:  ozark
+
+> library(rgdal)
+rgdal: version: 0.9-3, (SVN revision 530)
+ Geospatial Data Abstraction Library extensions to R successfully loaded
+ Loaded GDAL runtime: GDAL 1.9.2, released 2012/10/08
+ Path to GDAL shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/gdal
+ Loaded PROJ.4 runtime: Rel. 4.9.1, 04 March 2015, [PJ_VERSION: 491]
+ Path to PROJ.4 shared files: /Library/Frameworks/R.framework/Versions/3.2/Resources/library/rgdal/proj
+ Linking to sp version: 1.1-0 
+> library(raster)
+> ozark.enm <- raster("Ozark.asc")
+> ozark.enm
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : /Users/Newman/Documents/SCHOOL STUFF/LSU/AUSTIN LAB/DISSERTATION/AMPHIBIAN NICHE MODELING/Ozark.asc 
+names       : Ozark 
+
+> raster.breadth(ozark.enm)
+$B1
+[1] 0.8805671
+
+$B2
+[1] 0.08795501
+
+> ouachita.enm <- raster("Ouachita.asc")
+> raster.breadth(ouachita.enm)
+$B1
+[1] 0.7690923
+
+$B2
+[1] 0.01352991
+
+> help(dismo)
+starting httpd help server ... done
+> help(sdm)
+No documentation for ‘sdm’ in specified packages and libraries:
+you could try ‘??sdm’
+> help('sdm','dismo')
+No documentation for ‘sdm’ in specified packages and libraries:
+you could try ‘??sdm’
+> help(sdm,dismo)
+No documentation for ‘sdm’ in specified packages and libraries:
+you could try ‘??sdm’
+> help(dismo)
+> vignette('sdm','dismo')
+> system.file("java",package = "dismo")
+[1] "/Library/Frameworks/R.framework/Versions/3.2/Resources/library/dismo/java"
+> library(rJava)
+Warning message:
+package ‘rJava’ was built under R version 3.2.3 
+> ozark
+
+
+Range raster: 
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : in memory
+names       : layer.1 
+values      : 1, 1  (min, max)
+
+
+
+Presence points (first ten only): 
+
+| longitude| latitude|
+|---------:|--------:|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+
+
+Background points (first ten only): 
+
+| longitude| latitude|
+|---------:|--------:|
+| -90.61250| 37.70417|
+| -90.49583| 37.47917|
+| -91.40417| 37.65417|
+| -90.99583| 37.92083|
+| -91.27917| 37.78750|
+| -91.57083| 37.72917|
+| -90.68750| 38.47917|
+| -90.94583| 37.12917|
+| -90.06250| 37.55417|
+| -91.49583| 37.72917|
+
+
+Species name:  ozark
+
+> names(ozark)
+[1] "range"             "presence.points"   "background.points" "models"           
+[5] "species.name"     
+> names(ozark$presence.points)
+[1] "longitude" "latitude" 
+> names(ozark$presence.points) <- c("Longitude","Latitude")
+> names(ozark$background.points)
+[1] "longitude" "latitude" 
+> names(ozark$background.points) <- c("Longitude","Latitude")
+> ozark.mx <- enmtools.maxent(ozark, env, test.prop = 0.2)
+> traceback()
+12: as.vector(result)
+11: .readRasterLayerValues(xx, row, nrows, col, ncols)
+10: .local(x, ...)
+9: getValuesBlock(x, row = rr, nrows = tr$nrows[i], firstcol, ncols)
+8: getValuesBlock(x, row = rr, nrows = tr$nrows[i], firstcol, ncols)
+7: .local(object, ...)
+6: predict(model, object, filename = filename, ext = ext, progress = progress, 
+       format = format, overwrite = overwrite, ...)
+5: predict(model, object, filename = filename, ext = ext, progress = progress, 
+       format = format, overwrite = overwrite, ...)
+4: .local(object, ...)
+3: predict(env, this.mx, type = "response")
+2: predict(env, this.mx, type = "response")
+1: enmtools.maxent(ozark, env, test.prop = 0.2)
+> save(ozark, file="ozark_Robject.rda")
+> rm ozark
+Error: unexpected symbol in "rm ozark"
+> rm(ozark)
+> ozark
+Error: object 'ozark' not found
+> attach("ozark_Robject.rda")
+> ozark
+
+
+Range raster: 
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : in memory
+names       : layer.1 
+values      : 1, 1  (min, max)
+
+
+
+Presence points (first ten only): 
+
+| Longitude| Latitude|
+|---------:|--------:|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+| -90.18917| 36.97861|
+
+
+Background points (first ten only): 
+
+| Longitude| Latitude|
+|---------:|--------:|
+| -90.61250| 37.70417|
+| -90.49583| 37.47917|
+| -91.40417| 37.65417|
+| -90.99583| 37.92083|
+| -91.27917| 37.78750|
+| -91.57083| 37.72917|
+| -90.68750| 38.47917|
+| -90.94583| 37.12917|
+| -90.06250| 37.55417|
+| -91.49583| 37.72917|
+
+
+Species name:  ozark
+
+> ozark.enm
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : /Users/Newman/Documents/SCHOOL STUFF/LSU/AUSTIN LAB/DISSERTATION/AMPHIBIAN NICHE MODELING/Ozark.asc 
+names       : Ozark 
+
+> plot(ozark.enm)
+> ozarkPlot <- visualize.enm(ozark.enm, env, nbins = 100, layers = c("layer.2","layer.10"), plot.points = TRUE)
+Error in visualize.enm(ozark.enm, env, nbins = 100, layers = c("layer.2",  : 
+  This function requires an enmtools.model object!
+> ozark.maxent <- enmtools.maxent()
+Error in isTRUE(is.na(this.species$range)) : 
+  argument "species" is missing, with no default
+> enmtools.species()
+
+
+Range raster not defined.
+
+Presence points not defined.
+
+Background points not defined.
+
+Species name not defined.
+
+> enmtools.maxent()
+Error in isTRUE(is.na(this.species$range)) : 
+  argument "species" is missing, with no default
+> ozark.mx <- enmtools.maxent(ozark, env, test.prop = 0.2)
+> ozark.mx
+
+
+Data table (top ten lines): 
+
+|   | Longitude| Latitude| presence|
+|:--|---------:|--------:|--------:|
+|1  | -90.18917| 36.97861|        1|
+|3  | -90.18917| 36.97861|        1|
+|4  | -90.18917| 36.97861|        1|
+|5  | -90.18917| 36.97861|        1|
+|6  | -90.18917| 36.97861|        1|
+|7  | -90.18917| 36.97861|        1|
+|8  | -90.18917| 36.97861|        1|
+|9  | -90.18917| 36.97861|        1|
+|10 | -90.18917| 36.97861|        1|
+|12 | -90.13121| 37.09360|        1|
+
+
+Model:  Length  Class   Mode 
+     1 MaxEnt     S4 
+
+
+Model fit (training data):  class          : ModelEvaluation 
+n presences    : 892 
+n absences     : 1000 
+AUC            : 0.6699339 
+cor            : 0.3927746 
+max TPR+TNR at : 0.5178913 
+
+
+Proportion of data wittheld for model fitting:  0.2
+
+Model fit (test data):  class          : ModelEvaluation 
+n presences    : 224 
+n absences     : 1000 
+AUC            : 0.6671317 
+cor            : 0.2633081 
+max TPR+TNR at : 0.5178913 
+
+
+Suitability:  
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : in memory
+names       : layer 
+values      : 0.3948409, 0.602695  (min, max)
+
+> plot(ozark.mx)
+> ozarkPlot <- visualize.enm(ozark.mx, env, nbins = 100, layers = c("layer.2","layer.10"), plot.points = TRUE)
+> names(ozarkPlot)
+[1] "suit.plot"       "background.plot"
+> ozarkPlot$suit.plot
+> visualize.enm(ozark.mx, env, nbins = 100, layers = c("layer.1","layer.2"), plot.points = TRUE)
+$suit.plot
+
+$background.plot
+
+> ozarkPlot2 <- visualize.enm(ozark.mx, env, nbins = 100, layers = c("layer.1","layer.2"), plot.points = TRUE)
+> ozarkPlot2$suit.plot
+> ozarkPlot2 <- visualize.enm(ozark.mx, env, nbins = 100, layers = c("layer.5","layer.3"), plot.points = TRUE)
+> ozarkPlot2$suit.plot
+> names(ozark.mx)
+[1] "analysis.df"         "test.data"           "test.prop"           "model"              
+[5] "training.evaluation" "test.evaluation"     "suitability"         "response.plots"     
+> summary(ozark.mx$suitability)
+               layer
+Min.    3.948409e-01
+1st Qu. 4.225658e-01
+Median  5.064601e-01
+3rd Qu. 5.829718e-01
+Max.    6.026950e-01
+NA's    2.993083e+06
+> ozark.mx$suitability
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : in memory
+names       : layer 
+values      : 0.3948409, 0.602695  (min, max)
+
+> ozark.mx$test.evaluation
+class          : ModelEvaluation 
+n presences    : 224 
+n absences     : 1000 
+AUC            : 0.6671317 
+cor            : 0.2633081 
+max TPR+TNR at : 0.5178913 
+> ozark.glm <- enmtools.glm(pres ~ layer.1 + layer.2 + layer.3 + layer.4 + layer.5 + layer.6 + layer.7 + layer.8 + layer.9 + layer.10 + layer.11, ozark, env, test.prop = 0.2)
+Adding environmental data to species ozark 
+	Processing presence points...
+	Processing background points...
+> ozark.glm
+
+
+Formula:  presence ~ layer.1 + layer.2 + layer.3 + layer.4 + layer.5 + 
+    layer.6 + layer.7 + layer.8 + layer.9 + layer.10 + layer.11
+<environment: 0x124a72ee0>
+
+
+Data table (top ten lines): 
+
+|   | Longitude| Latitude| layer.1| layer.2| layer.3| layer.4| layer.5| layer.6| layer.7| layer.8| layer.9| layer.10| layer.11| presence|
+|:--|---------:|--------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|--------:|--------:|--------:|
+|3  | -90.18917| 36.97861|    1207|      17|     371|     259|     279|     276|     127|    9028|     328|      -57|      139|        1|
+|4  | -90.18917| 36.97861|    1207|      17|     371|     259|     279|     276|     127|    9028|     328|      -57|      139|        1|
+|5  | -90.18917| 36.97861|    1207|      17|     371|     259|     279|     276|     127|    9028|     328|      -57|      139|        1|
+|6  | -90.18917| 36.97861|    1207|      17|     371|     259|     279|     276|     127|    9028|     328|      -57|      139|        1|
+|7  | -90.18917| 36.97861|    1207|      17|     371|     259|     279|     276|     127|    9028|     328|      -57|      139|        1|
+|8  | -90.18917| 36.97861|    1207|      17|     371|     259|     279|     276|     127|    9028|     328|      -57|      139|        1|
+|10 | -90.18917| 36.97861|    1207|      17|     371|     259|     279|     276|     127|    9028|     328|      -57|      139|        1|
+|11 | -90.13121| 37.09360|    1195|      17|     365|     262|     286|     266|     130|    8959|     325|      -61|      136|        1|
+|12 | -90.13121| 37.09360|    1195|      17|     365|     262|     286|     266|     130|    8959|     325|      -61|      136|        1|
+|13 | -90.13121| 37.09360|    1195|      17|     365|     262|     286|     266|     130|    8959|     325|      -61|      136|        1|
+
+
+Model:  
+Call:
+glm(formula = f, family = "binomial", data = analysis.df[, -c(1, 
+    2)])
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-3.3100  -0.3060  -0.0045   0.3514   5.1509  
+
+Coefficients:
+             Estimate Std. Error z value Pr(>|z|)    
+(Intercept) 54.201987  34.406771   1.575  0.11518    
+layer.1      0.111941   0.046182   2.424  0.01536 *  
+layer.2     -2.201996   0.209904 -10.491  < 2e-16 ***
+layer.3     -0.040592   0.079682  -0.509  0.61045    
+layer.4     -0.518402   0.042481 -12.203  < 2e-16 ***
+layer.5      0.068519   0.042910   1.597  0.11031    
+layer.6      0.273160   0.059439   4.596 4.31e-06 ***
+layer.7     -0.516699   0.085185  -6.066 1.31e-09 ***
+layer.8     -0.013052   0.003039  -4.296 1.74e-05 ***
+layer.9      0.150275   0.071448   2.103  0.03544 *  
+layer.10    -0.584378   0.085384  -6.844 7.70e-12 ***
+layer.11     0.029238   0.011047   2.647  0.00813 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 2616.7  on 1891  degrees of freedom
+Residual deviance: 1027.2  on 1880  degrees of freedom
+AIC: 1051.2
+
+Number of Fisher Scoring iterations: 7
+
+
+
+Model fit (training data):  class          : ModelEvaluation 
+n presences    : 892 
+n absences     : 1000 
+AUC            : 0.9581614 
+cor            : 0.724573 
+max TPR+TNR at : 1.196873 
+
+
+Proportion of data wittheld for model fitting:  0.2
+
+Model fit (test data):  class          : ModelEvaluation 
+n presences    : 224 
+n absences     : 1000 
+AUC            : 0.9448705 
+cor            : 0.5598613 
+max TPR+TNR at : 0.1300578 
+
+
+Suitability:  
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : in memory
+names       : layer 
+values      : 2.220446e-16, 1  (min, max)
+
+> ozarkPlot_glm <- visualize.enm(ozark.glm, env, nbins = 100, layers = c("layer.5","layer.3"), plot.points = TRUE)
+> ozarkPlot_glm$suit.plot
+> ozark.glm$layer.1
+NULL
+> plot(ozark.glm$layer.1)
+Error in plot.window(...) : need finite 'xlim' values
+In addition: Warning messages:
+1: In min(x) : no non-missing arguments to min; returning Inf
+2: In max(x) : no non-missing arguments to max; returning -Inf
+3: In min(x) : no non-missing arguments to min; returning Inf
+4: In max(x) : no non-missing arguments to max; returning -Inf
+> ozarkPlot_glm <- visualize.enm(ozark.glm, env, nbins = 100, layers = c("layer.2","layer.4"), plot.points = TRUE)
+> ozarkPlot_glm$suit.plot
+> appalachian
+Error: object 'appalachian' not found
+> appalachian <- enmtools.species()
+> appalachian$species.name <- "appalachian"
+> appalachian$presence.points <- read.csv("input_Maxent_newest_regions_app.csv")[,2:3]
+> appalachian$range <- background.raster.buffer(appalachian$presence.points, 50000, mask = env)
+> appalachian$background.points <- background.points.buffer(points = appalachian$presence.points, radius = 20000, n = 1000, mask = env[[1]])
+> appalachian.glm <- enmtools.glm(pres ~ layer.1 + layer.2 + layer.3 + layer.4 + layer.5 + layer.6 + layer.7 + layer.8 + layer.9 + layer.10 + layer.11, appalachian, env, test.prop = 0.2)
+Adding environmental data to species appalachian 
+	Processing presence points...
+	Processing background points...
+> appalachian.glm
+
+
+Formula:  presence ~ layer.1 + layer.2 + layer.3 + layer.4 + layer.5 + 
+    layer.6 + layer.7 + layer.8 + layer.9 + layer.10 + layer.11
+<environment: 0x126a82b20>
+
+
+Data table (top ten lines): 
+
+|   | Longitude| Latitude| layer.1| layer.2| layer.3| layer.4| layer.5| layer.6| layer.7| layer.8| layer.9| layer.10| layer.11| presence|
+|:--|---------:|--------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|--------:|--------:|--------:|
+|1  | -85.80300| 33.62400|    1384|      20|     429|     262|     316|     389|     137|    7355|     325|       -9|       79|        1|
+|4  | -85.98856| 33.65962|    1407|      20|     433|     269|     321|     393|     135|    7375|     320|      -13|       75|        1|
+|5  | -85.98856| 33.65962|    1407|      20|     433|     269|     321|     393|     135|    7375|     320|      -13|       75|        1|
+|6  | -85.98856| 33.65962|    1407|      20|     433|     269|     321|     393|     135|    7375|     320|      -13|       75|        1|
+|7  | -85.98856| 33.65962|    1407|      20|     433|     269|     321|     393|     135|    7375|     320|      -13|       75|        1|
+|8  | -85.98856| 33.65962|    1407|      20|     433|     269|     321|     393|     135|    7375|     320|      -13|       75|        1|
+|9  | -85.61777| 33.71367|    1444|      20|     443|     273|     325|     403|     138|    7330|     318|      -20|       71|        1|
+|10 | -85.61777| 33.71367|    1444|      20|     443|     273|     325|     403|     138|    7330|     318|      -20|       71|        1|
+|11 | -85.61777| 33.71367|    1444|      20|     443|     273|     325|     403|     138|    7330|     318|      -20|       71|        1|
+|12 | -85.61777| 33.71367|    1444|      20|     443|     273|     325|     403|     138|    7330|     318|      -20|       71|        1|
+
+
+Model:  
+Call:
+glm(formula = f, family = "binomial", data = analysis.df[, -c(1, 
+    2)])
+
+Deviance Residuals: 
+    Min       1Q   Median       3Q      Max  
+-2.7990  -0.8343   0.4107   0.8416   2.3115  
+
+Coefficients:
+              Estimate Std. Error z value Pr(>|z|)    
+(Intercept) 12.2105377  4.3466608   2.809 0.004967 ** 
+layer.1      0.0204627  0.0082015   2.495 0.012596 *  
+layer.2     -0.3166343  0.1103443  -2.870 0.004111 ** 
+layer.3     -0.0391180  0.0164723  -2.375 0.017560 *  
+layer.4     -0.0671230  0.0184803  -3.632 0.000281 ***
+layer.5      0.0417433  0.0096027   4.347 1.38e-05 ***
+layer.6     -0.0312513  0.0144146  -2.168 0.030157 *  
+layer.7      0.0659522  0.0183142   3.601 0.000317 ***
+layer.8      0.0050830  0.0006876   7.392 1.45e-13 ***
+layer.9     -0.1385068  0.0196029  -7.066 1.60e-12 ***
+layer.10     0.1706103  0.0204970   8.324  < 2e-16 ***
+layer.11    -0.0316476  0.0026826 -11.797  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 3472.4  on 2607  degrees of freedom
+Residual deviance: 2618.6  on 2596  degrees of freedom
+AIC: 2642.6
+
+Number of Fisher Scoring iterations: 5
+
+
+
+Model fit (training data):  class          : ModelEvaluation 
+n presences    : 1608 
+n absences     : 1000 
+AUC            : 0.8191971 
+cor            : 0.5345613 
+max TPR+TNR at : 0.6017759 
+
+
+Proportion of data wittheld for model fitting:  0.2
+
+Model fit (test data):  class          : ModelEvaluation 
+n presences    : 402 
+n absences     : 1000 
+AUC            : 0.8121381 
+cor            : 0.5000136 
+max TPR+TNR at : 0.6017759 
+
+
+Suitability:  
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : in memory
+names       : layer 
+values      : 2.220446e-16, 0.999537  (min, max)
+
+> appalachianPlot_glm <- visualize.enm(appalachian.glm, env, nbins = 100, layers = c("layer.2","layer.10"), plot.points = TRUE)
+> appalachianPlot_glm$suit.plot
+> names(env)
+ [1] "layer.1"  "layer.2"  "layer.3"  "layer.4"  "layer.5"  "layer.6"  "layer.7"  "layer.8" 
+ [9] "layer.9"  "layer.10" "layer.11"
+> env$layer.2
+class       : RasterLayer 
+dimensions  : 2196, 3432, 7536672  (nrow, ncol, ncell)
+resolution  : 0.008333333, 0.008333333  (x, y)
+extent      : -100.5, -71.9, 23.7, 42  (xmin, xmax, ymin, ymax)
+coord. ref. : NA 
+data source : /Users/Newman/Documents/SCHOOL STUFF/LSU/AUSTIN LAB/DISSERTATION/AMPHIBIAN NICHE MODELING/SElayers/bio15.asc 
+names       : layer.2 
+values      : 6, 122  (min, max)
+
+> plot(env$layer.2)
+> plot(env$layer.10)
+> appalachian.gl$response.plots
+Error: object 'appalachian.gl' not found
+> appalachian.glm$response.plots
+$layer.1
+
+$layer.2
+
+$layer.3
+
+$layer.4
+
+$layer.5
+
+$layer.6
+
+$layer.7
+
+$layer.8
+
+$layer.9
+
+$layer.10
+
+$layer.11
+
+> overlap <- env.overlap(ozark.glm, appalachian.glm, env, tolerance = 0.001, max.reps = 10, cor.method = "spearman")
+> plot(overlap)
+Error in xy.coords(x, y, xlabel, ylabel, log) : 
+  'x' is a list, but does not have components 'x' and 'y'
+> overlap
+$env.D
+[1] 0.263194
+
+$env.I
+[1] 0.3205078
+
+$env.cor
+[1] 0.02941549
+
+> help(predict)
+> predict(env, appalachian.glm)
+> predict(env, appalachian.glm) -> predictApp
+Error in UseMethod("predict") : 
+  no applicable method for 'predict' applied to an object of class "c('enmtools.glm', 'enmtools.model')"
+> predict(env, appalachian.glm, progress = 'text') -> predictApp
+  |                                                                                  |   0%Error in UseMethod("predict") : 
+  no applicable method for 'predict' applied to an object of class "c('enmtools.glm', 'enmtools.model')"
+> raster.overlap(ozark.glm, appalachian.glm, verbose=FALSE) -> overlapRaster
+> overlapRaster
+$D
+[1] 0.5399944
+
+$I
+[1] 0.7140658
+
+$rank.cor
+[1] 0.4207574
+
+> save(ozark.glm, file="ozarkGLM_Robject.rda")
+> save(appalachian.glm, file="appalachianGLM_Robject.rda")
+> 
