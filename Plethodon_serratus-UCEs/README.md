@@ -12,3 +12,5 @@ Mostly UCE sequence data pre-processing:
 A few analysis scripts
 - RAxML
 - Starbeast
+
+Other analysis programs (Structure, Geneland, etc.) were mainly run locally in GUIs, so no associated code.
