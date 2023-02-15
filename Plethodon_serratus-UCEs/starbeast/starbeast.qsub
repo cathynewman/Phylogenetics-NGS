@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=72:00:00
+#PBS -o starbeast_50loci_500m_single.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N starbeast
+#PBS -A hpc_herp01
+#PBS -e starbeast_50loci_500m_single.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/starbeast
+cd $WORK_DIR
+
+beast -seed 170453 $WORK_DIR/smithparams_50_500m.xml
+
+date
+
+exit 0
