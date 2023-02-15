@@ -10,4 +10,4 @@ R code for ancestral character reconstruction using phytools
 
 ## GIS
 
-Also included some R scrips for downloading, processing, and analysis of GIS data (mainly of species range maps).
+Some R scripts for downloading, processing, and analysis of spatial GIS data (mainly of species range maps).
