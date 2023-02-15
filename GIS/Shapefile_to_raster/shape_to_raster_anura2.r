@@ -1,0 +1,6 @@
+Havivoca_r <- shp2raster(shp=Havivoca_prj, column="PRESENCE", cellsize=3839, ascname="Hyla_avivoca.asc")
+Hfemoralis_r <- shp2raster(shp=Hfemoralis_prj, column="PRESENCE", cellsize=5319, ascname="Hyla_femoralis.asc")
+Hgratiosa_r <- shp2raster(shp=Hgratiosa_prj, column="PRESENCE", cellsize=6792, ascname="Hyla_gratiosa.asc")
+Pbrachyphona_r <- shp2raster(shp=Pbrachyphona_prj, column="PRESENCE", cellsize=3370, ascname="Pseudacris_brachyphona.asc")
+Rcapito_r <- shp2raster(shp=Rcapito_prj, column="PRESENCE", cellsize=4338, ascname="Rana_capito.asc")
+Rsylvatica_r <- shp2raster(shp=Rsylvatica_prj, column="PRESENCE", cellsize=24297, ascname="Rana_sylvatica.asc")

@@ -1,0 +1,21 @@
+> library(rgdal)
+> library(raster)
+
+Load unprojected shapefile:
+> Pserratus_shp <- readOGR("shapefiles","Pserratus_range")
+
+Re-project shapefile to North America Albers Equal Area Conic:
+> Pserratus_shp_prj <- spTransform(Pserratus_shp, CRS("+proj=aea +lat_1=20 +lat_2=60 +lat_0=40 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"))
+> writeOGR(Pserratus_shp_prj, "shapefiles_projected","Plethodon_serratus", driver="ESRI Shapefile", overwrite_layer=TRUE)
+
+
+Load R script to convert shapefile to raster:
+> source("https://raw.githubusercontent.com/brry/misc/master/shp2raster.R")
+
+Convert projected shapefile to raster:
+> Pserratus_raster <- shp2raster(shp=Pserratus_shp_prj, column="PRESENCE", cellsize=[CELLSIZE])
+
+
+*** TO CALCULATE CELLSIZE ***
+To make equivalent to ArcGIS default:
+   Cell size = (shortest of W or H of extent of shapefile) / 250
