@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=72:00:00
+#PBS -o raxml_rboot80.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N raxml_rboot80
+#PBS -A hpc_herp01
+#PBS -e raxml_rboot80.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/raxml/
+cd $WORK_DIR
+
+raxmlHPC-PTHREADS-SSE3 -s mafft-nexus-80.phylip -n 80_rapidboot -f a -x 65190 -# 1000 -p 98475 -m GTRGAMMA -T 16
+
+date
+
+exit 0

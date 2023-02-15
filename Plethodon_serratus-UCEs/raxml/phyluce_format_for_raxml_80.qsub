@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=72:00:00
+#PBS -o phyluce_raxml4.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N phyluce_raxml4
+#PBS -A hpc_herp01
+#PBS -e phyluce_raxml4.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/matched_contigs/taxon-set600/
+cd $WORK_DIR
+
+/home/cenewman/anaconda/bin/phyluce_align_format_nexus_files_for_raxml --alignments mafft-nexus-80/ --output raxml-80
+
+date
+
+exit 0
