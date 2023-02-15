@@ -1,6 +1,6 @@
 # _Plethodon serratus_ UCEs
 
-*.qsub files are job submission files for LONI HPC or HPC @ LSU (old job submission system)
+<code>*.qsub</code> files are job submission files for LONI HPC or HPC @ LSU (old job submission system)
 
 Mostly UCE sequence data pre-processing:
 - QC in illumiprocessor
