@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=72:00:00
+#PBS -o phyluce_trinity.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N phyluce_trinity
+#PBS -A hpc_herp01
+#PBS -e phyluce_trinity.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata
+cd $WORK_DIR
+
+mkdir log
+
+/home/cenewman/anaconda/bin/phyluce_assembly_assemblo_trinity --config phyluce_trinity.conf --output assemblies_trinity --subfolder split-adapter-quality-trimmed --clean --cores 16 --log-path log
+
+date
+
+exit 0
