@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=72:00:00
+#PBS -o align3.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N align3
+#PBS -A hpc_herp01
+#PBS -e align3.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata
+cd $WORK_DIR
+
+/home/cenewman/anaconda/bin/phyluce_align_seqcap_align --fasta matched_contigs/taxon-set3-1k/dataset3_1k.fasta --output matched_contigs/taxon-set3-1k/mafft-nexus --taxa 60 --aligner mafft --cores 16 --incomplete-matrix
+
+date
+
+exit 0
