@@ -2,6 +2,8 @@
 
 <code>*.qsub</code> files are job submission files for LONI HPC or HPC @ LSU (old job submission system)
 
+<code>0_Plethodon_UCE_processing_commands.txt</code> is a reference file containing a running list of all the commands + my notes.
+
 Mostly UCE sequence data pre-processing:
 - QC in illumiprocessor
 - Contig assembly in Trinity via phyluce
