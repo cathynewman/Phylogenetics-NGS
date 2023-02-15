@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=36:00:00
+#PBS -o gatk_rbphase.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N gatk_rbphase
+#PBS -A hpc_herp01
+#PBS -e gatk_rbphase.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T ReadBackedPhasing -R popgen/cen131.fasta -I popgen/8_gatk_1k/Pserratus_RI_1k.bam --variant popgen/8_gatk_1k/Pserratus_SNPs_pass-only_1k.vcf -L popgen/8_gatk_1k/Pserratus_SNPs_pass-only_1k.vcf --disable_auto_index_creation_and_locking_when_reading_rods -o popgen/8_gatk_1k/Pserratus_SNPs_phased_1k.vcf --phaseQualityThresh 20.0 -rf BadCigar
+
+date
+
+exit 0

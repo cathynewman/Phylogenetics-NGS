@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=36:00:00
+#PBS -o gatk_call_snp.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N gatk_callsnp
+#PBS -A hpc_herp01
+#PBS -e gatk_call_snp.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T UnifiedGenotyper -R popgen/cen131.fasta -I popgen/8_gatk_1k/Pserratus_RI_1k.bam -gt_mode DISCOVERY -o popgen/8_gatk_1k/Pserratus_raw_SNPs_1k.vcf -ploidy 2 -rf BadCigar
+
+date
+
+exit 0

@@ -1,0 +1,41 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=12:00:00
+#PBS -o picard_clean4.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N picard_clean4
+#PBS -A hpc_herp01
+#PBS -e picard_clean4.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_CEN132-aln.bam O=popgen/6_picard/Pserratus_CEN132-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_CEN134-aln.bam O=popgen/6_picard/Pserratus_CEN134-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_CEN136-aln.bam O=popgen/6_picard/Pserratus_CEN136-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_CEN139-aln.bam O=popgen/6_picard/Pserratus_CEN139-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_CEN142-aln.bam O=popgen/6_picard/Pserratus_CEN142-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_ENR0165-aln.bam O=popgen/6_picard/Pserratus_ENR0165-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_FHSM15253-aln.bam O=popgen/6_picard/Pserratus_FHSM15253-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_FHSM15535-aln.bam O=popgen/6_picard/Pserratus_FHSM15535-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_FHSM15547-aln.bam O=popgen/6_picard/Pserratus_FHSM15547-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_FHSM15548-aln.bam O=popgen/6_picard/Pserratus_FHSM15548-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_FHSM15549-aln.bam O=popgen/6_picard/Pserratus_FHSM15549-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_LSUMZ18827-aln.bam O=popgen/6_picard/Pserratus_LSUMZ18827-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_LSUMZ18828-aln.bam O=popgen/6_picard/Pserratus_LSUMZ18828-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_LSUMZ21037-aln.bam O=popgen/6_picard/Pserratus_LSUMZ21037-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_LSUMZ21256-aln.bam O=popgen/6_picard/Pserratus_LSUMZ21256-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_LSUMZ2558-aln.bam O=popgen/6_picard/Pserratus_LSUMZ2558-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_LSUMZ2568-aln.bam O=popgen/6_picard/Pserratus_LSUMZ2568-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_LSUMZ2569-aln.bam O=popgen/6_picard/Pserratus_LSUMZ2569-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_MVZ145058-aln.bam O=popgen/6_picard/Pserratus_MVZ145058-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_MVZ145059-aln.bam O=popgen/6_picard/Pserratus_MVZ145059-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_OMNH40315-aln.bam O=popgen/6_picard/Pserratus_OMNH40315-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pserratus_OMNH41642-aln.bam O=popgen/6_picard/Pserratus_OMNH41642-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+
+date
+
+exit 0

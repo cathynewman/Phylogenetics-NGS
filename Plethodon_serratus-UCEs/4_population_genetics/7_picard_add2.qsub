@@ -1,0 +1,41 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=12:00:00
+#PBS -o picard_add2.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N picard_add2
+#PBS -A hpc_herp01
+#PBS -e picard_add2.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT084-aln_CL.bam O=popgen/6_picard/Pserratus_BDT084-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT084 RGSM=Pserratus_BDT084 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT085-aln_CL.bam O=popgen/6_picard/Pserratus_BDT085-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT085 RGSM=Pserratus_BDT085 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT087-aln_CL.bam O=popgen/6_picard/Pserratus_BDT087-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT087 RGSM=Pserratus_BDT087 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT089-aln_CL.bam O=popgen/6_picard/Pserratus_BDT089-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT089 RGSM=Pserratus_BDT089 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT092-aln_CL.bam O=popgen/6_picard/Pserratus_BDT092-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT092 RGSM=Pserratus_BDT092 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT093-aln_CL.bam O=popgen/6_picard/Pserratus_BDT093-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT093 RGSM=Pserratus_BDT093 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT094-aln_CL.bam O=popgen/6_picard/Pserratus_BDT094-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT094 RGSM=Pserratus_BDT094 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT095-aln_CL.bam O=popgen/6_picard/Pserratus_BDT095-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT095 RGSM=Pserratus_BDT095 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT098-aln_CL.bam O=popgen/6_picard/Pserratus_BDT098-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT098 RGSM=Pserratus_BDT098 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT100-aln_CL.bam O=popgen/6_picard/Pserratus_BDT100-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT100 RGSM=Pserratus_BDT100 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT101-aln_CL.bam O=popgen/6_picard/Pserratus_BDT101-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT101 RGSM=Pserratus_BDT101 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT103-aln_CL.bam O=popgen/6_picard/Pserratus_BDT103-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT103 RGSM=Pserratus_BDT103 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT109-aln_CL.bam O=popgen/6_picard/Pserratus_BDT109-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT109 RGSM=Pserratus_BDT109 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT111-aln_CL.bam O=popgen/6_picard/Pserratus_BDT111-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT111 RGSM=Pserratus_BDT111 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT113-aln_CL.bam O=popgen/6_picard/Pserratus_BDT113-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT113 RGSM=Pserratus_BDT113 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT114-aln_CL.bam O=popgen/6_picard/Pserratus_BDT114-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT114 RGSM=Pserratus_BDT114 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT118-aln_CL.bam O=popgen/6_picard/Pserratus_BDT118-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT118 RGSM=Pserratus_BDT118 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT123-aln_CL.bam O=popgen/6_picard/Pserratus_BDT123-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT123 RGSM=Pserratus_BDT123 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT132-aln_CL.bam O=popgen/6_picard/Pserratus_BDT132-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT132 RGSM=Pserratus_BDT132 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT134-aln_CL.bam O=popgen/6_picard/Pserratus_BDT134-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT134 RGSM=Pserratus_BDT134 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT135-aln_CL.bam O=popgen/6_picard/Pserratus_BDT135-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT135 RGSM=Pserratus_BDT135 VALIDATION_STRINGENCY=LENIENT
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pserratus_BDT139-aln_CL.bam O=popgen/6_picard/Pserratus_BDT139-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pserratus_BDT139 RGSM=Pserratus_BDT139 VALIDATION_STRINGENCY=LENIENT
+
+date
+
+exit 0

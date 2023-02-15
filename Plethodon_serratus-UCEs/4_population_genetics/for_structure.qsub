@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=36:00:00
+#PBS -o for_structure.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N for_structure
+#PBS -A hpc_herp01
+#PBS -e for_structure.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+python $HOME_DIR/programs/structure_from_vcf.py popgen/8_gatk/Pserratus_SNPs_phased.vcf popgen/structure/Pserratus_structure.txt
+
+date
+
+exit 0

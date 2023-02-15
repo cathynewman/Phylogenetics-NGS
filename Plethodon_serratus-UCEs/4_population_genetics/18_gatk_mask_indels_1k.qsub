@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=36:00:00
+#PBS -o gatk_mask_indels.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N gatk_mask
+#PBS -A hpc_herp01
+#PBS -e gatk_mask_indels.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T VariantFiltration -R popgen/cen131.fasta -V popgen/8_gatk_1k/Pserratus_raw_SNPs_1k.vcf --mask popgen/8_gatk_1k/Pserratus_SNPs_indels_1k.vcf --maskExtension 5 --maskName InDel --clusterWindowSize 10 --filterExpression "MQ0 >= 4 && ((MQ0 / (1.0 * DP)) > 0.1)" --filterName "BadValidation" --filterExpression "QUAL < 30.0" --filterName "LowQual" --filterExpression "QD < 5.0" --filterName "LowVQCBD" --disable_auto_index_creation_and_locking_when_reading_rods -o popgen/8_gatk_1k/Pserratus_SNPs_no_indels_1k.vcf -rf BadCigar
+
+date
+
+exit 0

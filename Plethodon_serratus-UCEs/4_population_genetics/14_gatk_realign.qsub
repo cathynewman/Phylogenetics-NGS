@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=36:00:00
+#PBS -o gatk_realign.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N gatk_realign
+#PBS -A hpc_herp01
+#PBS -e gatk_realign.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T IndelRealigner -R popgen/cen131.fasta -I popgen/7_merge-bams/Pserratus.bam -targetIntervals popgen/8_gatk/Pserratus.intervals -LOD 3.0 -o popgen/8_gatk/Pserratus_RI.bam
+
+date
+
+exit 0

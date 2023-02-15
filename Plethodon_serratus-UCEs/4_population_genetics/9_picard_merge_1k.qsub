@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=12:00:00
+#PBS -o picard_merge1k.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N picard_merge
+#PBS -A hpc_herp01
+#PBS -e picard_merge1k.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/anaconda/jar/MergeSamFiles.jar SO=coordinate AS=true I=popgen/6_picard/Pserratus_BDT042-aln_MD.bam I=popgen/6_picard/Pserratus_BDT051-aln_MD.bam I=popgen/6_picard/Pserratus_BDT057-aln_MD.bam I=popgen/6_picard/Pserratus_BDT060-aln_MD.bam I=popgen/6_picard/Pserratus_BDT062-aln_MD.bam I=popgen/6_picard/Pserratus_BDT076-aln_MD.bam I=popgen/6_picard/Pserratus_BDT082-aln_MD.bam I=popgen/6_picard/Pserratus_BDT083-aln_MD.bam I=popgen/6_picard/Pserratus_BDT085-aln_MD.bam I=popgen/6_picard/Pserratus_BDT087-aln_MD.bam I=popgen/6_picard/Pserratus_BDT089-aln_MD.bam I=popgen/6_picard/Pserratus_BDT092-aln_MD.bam I=popgen/6_picard/Pserratus_BDT093-aln_MD.bam I=popgen/6_picard/Pserratus_BDT094-aln_MD.bam I=popgen/6_picard/Pserratus_BDT095-aln_MD.bam I=popgen/6_picard/Pserratus_BDT098-aln_MD.bam I=popgen/6_picard/Pserratus_BDT100-aln_MD.bam I=popgen/6_picard/Pserratus_BDT101-aln_MD.bam I=popgen/6_picard/Pserratus_BDT103-aln_MD.bam I=popgen/6_picard/Pserratus_BDT109-aln_MD.bam I=popgen/6_picard/Pserratus_BDT111-aln_MD.bam I=popgen/6_picard/Pserratus_BDT113-aln_MD.bam I=popgen/6_picard/Pserratus_BDT114-aln_MD.bam I=popgen/6_picard/Pserratus_BDT118-aln_MD.bam I=popgen/6_picard/Pserratus_BDT132-aln_MD.bam I=popgen/6_picard/Pserratus_BDT134-aln_MD.bam I=popgen/6_picard/Pserratus_BDT135-aln_MD.bam I=popgen/6_picard/Pserratus_BDT142-aln_MD.bam I=popgen/6_picard/Pserratus_BDT145-aln_MD.bam I=popgen/6_picard/Pserratus_BDT148-aln_MD.bam I=popgen/6_picard/Pserratus_BDT149-aln_MD.bam I=popgen/6_picard/Pserratus_BDT161-aln_MD.bam I=popgen/6_picard/Pserratus_BDT163-aln_MD.bam I=popgen/6_picard/Pserratus_BDT164-aln_MD.bam I=popgen/6_picard/Pserratus_BDT169-aln_MD.bam I=popgen/6_picard/Pserratus_BDT173-aln_MD.bam I=popgen/6_picard/Pserratus_BDT175-aln_MD.bam I=popgen/6_picard/Pserratus_BDT177-aln_MD.bam I=popgen/6_picard/Pserratus_BDT178-aln_MD.bam I=popgen/6_picard/Pserratus_BDT179-aln_MD.bam I=popgen/6_picard/Pserratus_BDT180-aln_MD.bam I=popgen/6_picard/Pserratus_BDT181-aln_MD.bam I=popgen/6_picard/Pserratus_CEN131-aln_MD.bam I=popgen/6_picard/Pserratus_CEN1312-aln_MD.bam I=popgen/6_picard/Pserratus_CEN132-aln_MD.bam I=popgen/6_picard/Pserratus_CEN134-aln_MD.bam I=popgen/6_picard/Pserratus_CEN136-aln_MD.bam I=popgen/6_picard/Pserratus_CEN139-aln_MD.bam I=popgen/6_picard/Pserratus_ENR0165-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15253-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15547-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15548-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15549-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ21256-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ2558-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ2569-aln_MD.bam I=popgen/6_picard/Pserratus_OMNH40315-aln_MD.bam O=popgen/7_merge-bams_1k/Pserratus_1k.bam
+
+date
+
+exit 0

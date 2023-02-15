@@ -1,0 +1,39 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=12:00:00
+#PBS -o samtools2.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N samtools2
+#PBS -A hpc_herp01
+#PBS -e samtools2.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+samtools view -bS popgen/5-mapping/Pserratus_BDT082-aln.sam > popgen/5-mapping/Pserratus_BDT082-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT083-aln.sam > popgen/5-mapping/Pserratus_BDT083-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT084-aln.sam > popgen/5-mapping/Pserratus_BDT084-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT085-aln.sam > popgen/5-mapping/Pserratus_BDT085-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT087-aln.sam > popgen/5-mapping/Pserratus_BDT087-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT089-aln.sam > popgen/5-mapping/Pserratus_BDT089-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT092-aln.sam > popgen/5-mapping/Pserratus_BDT092-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT093-aln.sam > popgen/5-mapping/Pserratus_BDT093-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT094-aln.sam > popgen/5-mapping/Pserratus_BDT094-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT095-aln.sam > popgen/5-mapping/Pserratus_BDT095-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT098-aln.sam > popgen/5-mapping/Pserratus_BDT098-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT100-aln.sam > popgen/5-mapping/Pserratus_BDT100-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT101-aln.sam > popgen/5-mapping/Pserratus_BDT101-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT103-aln.sam > popgen/5-mapping/Pserratus_BDT103-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT109-aln.sam > popgen/5-mapping/Pserratus_BDT109-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT111-aln.sam > popgen/5-mapping/Pserratus_BDT111-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT113-aln.sam > popgen/5-mapping/Pserratus_BDT113-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT114-aln.sam > popgen/5-mapping/Pserratus_BDT114-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT118-aln.sam > popgen/5-mapping/Pserratus_BDT118-aln.bam
+samtools view -bS popgen/5-mapping/Pserratus_BDT123-aln.sam > popgen/5-mapping/Pserratus_BDT123-aln.bam
+
+date
+
+exit 0

@@ -1,0 +1,40 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=12:00:00
+#PBS -o picard_mark1.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N picard_mark1
+#PBS -A hpc_herp01
+#PBS -e picard_mark1.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pcinereus_LSUMZ15568-aln_RG.bam O=popgen/6_picard/Pcinereus_LSUMZ15568-aln_MD.bam METRICS_FILE=popgen/6_picard/Pcinereus_LSUMZ15568.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pcinereus_LSUMZ15569-aln_RG.bam O=popgen/6_picard/Pcinereus_LSUMZ15569-aln_MD.bam METRICS_FILE=popgen/6_picard/Pcinereus_LSUMZ15569.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT041-aln_RG.bam O=popgen/6_picard/Pserratus_BDT041-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT041.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT042-aln_RG.bam O=popgen/6_picard/Pserratus_BDT042-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT042.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT044-aln_RG.bam O=popgen/6_picard/Pserratus_BDT044-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT044.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT051-aln_RG.bam O=popgen/6_picard/Pserratus_BDT051-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT051.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT054-aln_RG.bam O=popgen/6_picard/Pserratus_BDT054-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT054.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT057-aln_RG.bam O=popgen/6_picard/Pserratus_BDT057-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT057.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT058-aln_RG.bam O=popgen/6_picard/Pserratus_BDT058-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT058.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT060-aln_RG.bam O=popgen/6_picard/Pserratus_BDT060-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT060.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT062-aln_RG.bam O=popgen/6_picard/Pserratus_BDT062-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT062.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT063-aln_RG.bam O=popgen/6_picard/Pserratus_BDT063-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT063.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT064-aln_RG.bam O=popgen/6_picard/Pserratus_BDT064-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT064.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT075-aln_RG.bam O=popgen/6_picard/Pserratus_BDT075-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT075.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT076-aln_RG.bam O=popgen/6_picard/Pserratus_BDT076-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT076.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT077-aln_RG.bam O=popgen/6_picard/Pserratus_BDT077-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT077.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT079-aln_RG.bam O=popgen/6_picard/Pserratus_BDT079-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT079.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT080-aln_RG.bam O=popgen/6_picard/Pserratus_BDT080-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT080.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT081-aln_RG.bam O=popgen/6_picard/Pserratus_BDT081-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT081.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT082-aln_RG.bam O=popgen/6_picard/Pserratus_BDT082-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT082.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pserratus_BDT083-aln_RG.bam O=popgen/6_picard/Pserratus_BDT083-aln_MD.bam METRICS_FILE=popgen/6_picard/Pserratus_BDT083.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+
+date
+
+exit 0

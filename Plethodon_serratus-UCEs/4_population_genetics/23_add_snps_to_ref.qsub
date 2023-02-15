@@ -1,0 +1,102 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=4
+#PBS -l walltime=36:00:00
+#PBS -o addsnpstoref.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N snpstoref
+#PBS -A hpc_herp01
+#PBS -e addsnpstoref.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT042_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT042_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT044_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT044_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT051_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT051_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT054_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT054_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT057_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT057_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT058_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT058_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT060_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT060_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT062_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT062_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT063_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT063_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT064_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT064_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT075_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT075_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT076_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT076_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT077_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT077_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT079_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT079_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT080_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT080_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT081_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT081_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT082_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT082_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT083_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT083_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT084_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT084_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT085_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT085_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT087_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT087_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT089_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT089_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT092_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT092_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT093_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT093_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT094_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT094_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT095_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT095_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT098_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT098_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT100_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT100_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT101_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT101_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT103_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT103_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT109_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT109_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT111_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT111_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT113_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT113_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT114_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT114_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT118_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT118_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT123_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT123_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT132_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT132_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT134_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT134_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT135_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT135_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT139_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT139_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT142_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT142_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT145_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT145_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT148_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT148_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT149_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT149_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT153_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT153_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT157_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT157_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT161_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT161_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT163_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT163_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT164_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT164_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT166_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT166_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT168_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT168_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT169_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT169_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT173_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT173_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT174_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT174_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT175_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT175_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT177_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT177_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT178_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT178_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT179_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT179_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT180_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT180_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT181_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT181_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_CEN131_SNPs_phased-table.txt popgen/10_sequences/Pserratus_CEN131_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_CEN1312_SNPs_phased-table.txt popgen/10_sequences/Pserratus_CEN1312_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_CEN132_SNPs_phased-table.txt popgen/10_sequences/Pserratus_CEN132_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_CEN134_SNPs_phased-table.txt popgen/10_sequences/Pserratus_CEN134_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_CEN136_SNPs_phased-table.txt popgen/10_sequences/Pserratus_CEN136_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_CEN139_SNPs_phased-table.txt popgen/10_sequences/Pserratus_CEN139_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_CEN142_SNPs_phased-table.txt popgen/10_sequences/Pserratus_CEN142_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_ENR0165_SNPs_phased-table.txt popgen/10_sequences/Pserratus_ENR0165_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_FHSM15253_SNPs_phased-table.txt popgen/10_sequences/Pserratus_FHSM15253_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_FHSM15535_SNPs_phased-table.txt popgen/10_sequences/Pserratus_FHSM15535_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_FHSM15547_SNPs_phased-table.txt popgen/10_sequences/Pserratus_FHSM15547_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_FHSM15548_SNPs_phased-table.txt popgen/10_sequences/Pserratus_FHSM15548_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_FHSM15549_SNPs_phased-table.txt popgen/10_sequences/Pserratus_FHSM15549_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_LSUMZ18827_SNPs_phased-table.txt popgen/10_sequences/Pserratus_LSUMZ18827_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_LSUMZ21037_SNPs_phased-table.txt popgen/10_sequences/Pserratus_LSUMZ21037_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_LSUMZ21256_SNPs_phased-table.txt popgen/10_sequences/Pserratus_LSUMZ21256_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_LSUMZ2558_SNPs_phased-table.txt popgen/10_sequences/Pserratus_LSUMZ2558_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_LSUMZ2568_SNPs_phased-table.txt popgen/10_sequences/Pserratus_LSUMZ2568_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_LSUMZ2569_SNPs_phased-table.txt popgen/10_sequences/Pserratus_LSUMZ2569_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_MVZ145058_SNPs_phased-table.txt popgen/10_sequences/Pserratus_MVZ145058_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_MVZ145059_SNPs_phased-table.txt popgen/10_sequences/Pserratus_MVZ145059_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_OMNH40315_SNPs_phased-table.txt popgen/10_sequences/Pserratus_OMNH40315_sequences.txt 1
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_OMNH41642_SNPs_phased-table.txt popgen/10_sequences/Pserratus_OMNH41642_sequences.txt 1
+
+date
+
+exit 0

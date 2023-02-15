@@ -1,0 +1,102 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=36:00:00
+#PBS -o gatk_vcfsmp.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N gatk_vcfsmp
+#PBS -A hpc_herp01
+#PBS -e gatk_vcfsmp.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/
+cd $WORK_DIR
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT042_SNPs.vcf -sn Pserratus_BDT042 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT044_SNPs.vcf -sn Pserratus_BDT044 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT051_SNPs.vcf -sn Pserratus_BDT051 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT054_SNPs.vcf -sn Pserratus_BDT054 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT057_SNPs.vcf -sn Pserratus_BDT057 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT058_SNPs.vcf -sn Pserratus_BDT058 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT060_SNPs.vcf -sn Pserratus_BDT060 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT062_SNPs.vcf -sn Pserratus_BDT062 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT063_SNPs.vcf -sn Pserratus_BDT063 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT064_SNPs.vcf -sn Pserratus_BDT064 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT075_SNPs.vcf -sn Pserratus_BDT075 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT076_SNPs.vcf -sn Pserratus_BDT076 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT077_SNPs.vcf -sn Pserratus_BDT077 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT079_SNPs.vcf -sn Pserratus_BDT079 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT080_SNPs.vcf -sn Pserratus_BDT080 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT081_SNPs.vcf -sn Pserratus_BDT081 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT082_SNPs.vcf -sn Pserratus_BDT082 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT083_SNPs.vcf -sn Pserratus_BDT083 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT084_SNPs.vcf -sn Pserratus_BDT084 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT085_SNPs.vcf -sn Pserratus_BDT085 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT087_SNPs.vcf -sn Pserratus_BDT087 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT089_SNPs.vcf -sn Pserratus_BDT089 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT092_SNPs.vcf -sn Pserratus_BDT092 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT093_SNPs.vcf -sn Pserratus_BDT093 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT094_SNPs.vcf -sn Pserratus_BDT094 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT095_SNPs.vcf -sn Pserratus_BDT095 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT098_SNPs.vcf -sn Pserratus_BDT098 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT100_SNPs.vcf -sn Pserratus_BDT100 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT101_SNPs.vcf -sn Pserratus_BDT101 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT103_SNPs.vcf -sn Pserratus_BDT103 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT109_SNPs.vcf -sn Pserratus_BDT109 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT111_SNPs.vcf -sn Pserratus_BDT111 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT113_SNPs.vcf -sn Pserratus_BDT113 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT114_SNPs.vcf -sn Pserratus_BDT114 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT118_SNPs.vcf -sn Pserratus_BDT118 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT123_SNPs.vcf -sn Pserratus_BDT123 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT132_SNPs.vcf -sn Pserratus_BDT132 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT134_SNPs.vcf -sn Pserratus_BDT134 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT135_SNPs.vcf -sn Pserratus_BDT135 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT139_SNPs.vcf -sn Pserratus_BDT139 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT142_SNPs.vcf -sn Pserratus_BDT142 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT145_SNPs.vcf -sn Pserratus_BDT145 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT148_SNPs.vcf -sn Pserratus_BDT148 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT149_SNPs.vcf -sn Pserratus_BDT149 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT153_SNPs.vcf -sn Pserratus_BDT153 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT157_SNPs.vcf -sn Pserratus_BDT157 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT161_SNPs.vcf -sn Pserratus_BDT161 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT163_SNPs.vcf -sn Pserratus_BDT163 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT164_SNPs.vcf -sn Pserratus_BDT164 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT166_SNPs.vcf -sn Pserratus_BDT166 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT168_SNPs.vcf -sn Pserratus_BDT168 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT169_SNPs.vcf -sn Pserratus_BDT169 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT173_SNPs.vcf -sn Pserratus_BDT173 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT174_SNPs.vcf -sn Pserratus_BDT174 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT175_SNPs.vcf -sn Pserratus_BDT175 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT177_SNPs.vcf -sn Pserratus_BDT177 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT178_SNPs.vcf -sn Pserratus_BDT178 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT179_SNPs.vcf -sn Pserratus_BDT179 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT180_SNPs.vcf -sn Pserratus_BDT180 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT181_SNPs.vcf -sn Pserratus_BDT181 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_CEN131_SNPs.vcf -sn Pserratus_CEN131 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_CEN1312_SNPs.vcf -sn Pserratus_CEN1312 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_CEN132_SNPs.vcf -sn Pserratus_CEN132 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_CEN134_SNPs.vcf -sn Pserratus_CEN134 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_CEN136_SNPs.vcf -sn Pserratus_CEN136 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_CEN139_SNPs.vcf -sn Pserratus_CEN139 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_CEN142_SNPs.vcf -sn Pserratus_CEN142 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_ENR0165_SNPs.vcf -sn Pserratus_ENR0165 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_FHSM15253_SNPs.vcf -sn Pserratus_FHSM15253 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_FHSM15535_SNPs.vcf -sn Pserratus_FHSM15535 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_FHSM15547_SNPs.vcf -sn Pserratus_FHSM15547 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_FHSM15548_SNPs.vcf -sn Pserratus_FHSM15548 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_FHSM15549_SNPs.vcf -sn Pserratus_FHSM15549 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_LSUMZ18827_SNPs.vcf -sn Pserratus_LSUMZ18827 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_LSUMZ21037_SNPs.vcf -sn Pserratus_LSUMZ21037 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_LSUMZ21256_SNPs.vcf -sn Pserratus_LSUMZ21256 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_LSUMZ2558_SNPs.vcf -sn Pserratus_LSUMZ2558 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_LSUMZ2568_SNPs.vcf -sn Pserratus_LSUMZ2568 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_LSUMZ2569_SNPs.vcf -sn Pserratus_LSUMZ2569 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_MVZ145058_SNPs.vcf -sn Pserratus_MVZ145058 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_MVZ145059_SNPs.vcf -sn Pserratus_MVZ145059 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_OMNH40315_SNPs.vcf -sn Pserratus_OMNH40315 -rf BadCigar
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_OMNH41642_SNPs.vcf -sn Pserratus_OMNH41642 -rf BadCigar
+
+date
+
+exit 0
