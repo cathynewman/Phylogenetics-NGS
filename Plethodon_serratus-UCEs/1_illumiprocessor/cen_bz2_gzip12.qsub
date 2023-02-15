@@ -1,0 +1,38 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=5:00:00
+#PBS -o gzip12.out
+#PBS -M cnewm15@lsu.edu
+#PBS -m ae
+#PBS -N gzip12
+#PBS -A hpc_skink01
+#PBS -e gzip12.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/illumiprocessor/rawreads
+cd $WORK_DIR
+
+gzip -c C6RLYANXX_s6_2_RapidGenomics_41_SL107493.fastq > SL107493_L006_R2_081.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_37_SL107489.fastq > SL107489_L006_R2_082.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_96_SL107548.fastq > SL107548_L006_R2_083.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_42_SL107494.fastq > SL107494_L006_R2_084.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_11_SL107463.fastq > SL107463_L006_R2_085.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_32_SL107484.fastq > SL107484_L006_R2_086.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_88_SL107540.fastq > SL107540_L006_R2_087.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_73_SL107525.fastq > SL107525_L006_R2_088.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_15_SL107467.fastq > SL107467_L006_R2_089.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_49_SL107501.fastq > SL107501_L006_R2_090.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_1_SL107453.fastq > SL107453_L006_R2_091.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_85_SL107537.fastq > SL107537_L006_R2_092.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_83_SL107535.fastq > SL107535_L006_R2_093.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_34_SL107486.fastq > SL107486_L006_R2_094.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_95_SL107547.fastq > SL107547_L006_R2_095.fastq.gz &
+gzip -c C6RLYANXX_s6_2_RapidGenomics_56_SL107508.fastq > SL107508_L006_R2_096.fastq.gz &
+
+wait
+
+
+date
+
+exit 0

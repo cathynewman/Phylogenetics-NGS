@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -q checkpt
+#PBS -l nodes=1:ppn=16
+#PBS -l walltime=72:00:00
+#PBS -o illumiprocessor.out
+#PBS -M cnewm15@lsu.edu
+#PBS -m ae
+#PBS -N illumiprocessor
+#PBS -A hpc_skink01
+#PBS -e illumiprocessor.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/illumiprocessor
+
+cd $WORK_DIR
+
+/home/cenewman/anaconda/bin/illumiprocessor --input raw --output cleaned_reads_from_illumiprocessor --config Pserratus_illumiprocessor.conf --trimmomatic /home/cenewman/anaconda/jar/trimmomatic.jar --cores 16
+
+date
+
+exit 0

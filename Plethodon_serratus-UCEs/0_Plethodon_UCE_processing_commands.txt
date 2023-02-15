@@ -1,0 +1,277 @@
+#######################
+# PROGRAM INSTALL NOTES
+#######################
+
+ANACONDA ON LONI HPC: QUEEN BEE
+
+Current version of Anaconda: anaconda2-5.1.0-Linux-x86_64.sh
+
+Anaconda installed successfully, but attempt to install phyluce threw error:
+
+[cenewman@qb2 ~]$ conda install phyluce
+Solving environment: failed
+
+UnsatisfiableError: The following specifications were found to be in conflict:
+  - numba
+  - phyluce
+Use "conda info <package>" to see the dependencies for each package.
+
+** Installed older version of Anaconda: v. 4.2.0 --> this worked.
+
+###########################################
+# PHYLOGENOMICS - BRANT FAIRCLOTH
+# https://github.com/faircloth-lab/phyluce
+###########################################
+# Easiest to install with Anaconda
+
+#############
+# 1. ILLUMIPROCESSOR: QC & adapter/barcode trimming (local or HPC)
+#############
+# input files need to be *.fastq.gz (cen_gzip.qsub)
+# input files renamed SLxxxxxx_L006_R1_###.fastq.gz or R2 (gz_file_rename_for_illumiprocessor.qsub)
+
+illumiprocessor --input rawdata --output cleaned_reads_from_illumiprocessor --config Plethodon_illumiprocessor2.conf --trimmomatic /Users/Newman/anaconda2/jar/trimmomatic.jar
+
+#############
+# 2. ASSEMBLY with TRINITY (on HPC)
+#############
+# requires Java 1.7 64-bit
+# creates thousands of temp files (auto deletes)
+# see https://github.com/faircloth-lab/phyluce/blob/master/docs/assembly.rst
+
+phyluce_assembly_assemblo_trinity --config phyluce_trinity.conf --output assemblies_trinity --subfolder split-adapter-quality-trimmed --clean --cores 16 --log-path log
+
+#############
+# 3. UCE PROCESSING POST-ASSEMBLY (locally - sqlite won't work on HPC)
+#############
+# see https://github.com/faircloth-lab/phyluce/blob/master/docs/uce-processing.rst
+# old probe set (Pserratus) = LSU_466401_probes.fasta
+# new probe set (Plethodon) = tetrapods-uce-5kv1.fasta
+# make sure to rename probes: uce-NNNN_pN
+
+phyluce_assembly_match_contigs_to_probes --contigs assemblies-trinity --probes tetrapods-uce-5kv1.fasta --output uce-search-results
+
+# Creating data matrix file (incomplete only)
+phyluce_assembly_get_match_counts --locus-db probe.matches.sqlite --taxon-list-config dataset1.conf --taxon-group 'dataset1' --output taxon-set1/dataset1_out.conf --incomplete-matrix
+phyluce_assembly_get_match_counts --locus-db probe.matches.sqlite --taxon-list-config dataset1all.conf --taxon-group 'dataset1all' --extend-locus-db pserratus/probe.matches.sqlite --output taxon-set1all/dataset1all_out.conf --incomplete-matrix
+phyluce_assembly_get_match_counts --locus-db probe.matches.sqlite --taxon-list-config dataset-slimy.conf --taxon-group 'dataset-slimy' --output taxon-slimy/dataset-slimy_out.conf --incomplete-matrix
+
+# Extracting fasta data using data matrix config file
+phyluce_assembly_get_fastas_from_match_counts --contigs assemblies-trinity --locus-db probe.matches.sqlite --match-count-output taxon-set1/dataset1_out.conf --incomplete-matrix taxon-set1/dataset1.incomplete --output taxon-set1/dataset1.fasta
+phyluce_assembly_get_fastas_from_match_counts --contigs assemblies-trinity --locus-db probe.matches.sqlite --match-count-output taxon-set1all/dataset1all_out.conf --incomplete-matrix taxon-set1all/dataset1all.incomplete --extend-locus-db pserratus/probe.matches.sqlite --extend-locus-contigs contigs-pserratus --output taxon-set1all/dataset1all.fasta
+phyluce_assembly_get_fastas_from_match_counts --contigs assemblies-trinity --locus-db probe.matches.sqlite --match-count-output taxon-slimy/dataset-slimy_out.conf --incomplete-matrix taxon-slimy/dataset-slimy.incomplete --output taxon-slimy/dataset-slimy.fasta
+
+# Get assembly coverage info
+phyluce_assembly_get_trinity_coverage_for_uce_loci --assemblies assemblies-coverage --match-count-output taxon-set1/dataset1_out.conf --type untrimmed --locus-db probe.matches.sqlite --output Coverage_data
+
+#############
+# 4. ALIGNMENT & TRIM (on HPC)
+#############
+
+# Create alignments in MAFFT
+phyluce_align_seqcap_align --fasta dataset1.fasta --output mafft-nexus/ --taxa 30 --aligner mafft --incomplete-matrix
+
+# Summary data
+# Note: %s in "data matrix completeness" based on total taxa in TaxaMax
+phyluce_align_get_align_summary_data --alignments mafft-nexus/
+
+# Remove locus names
+phyluce_align_remove_locus_name_from_nexus_lines --alignments mafft-nexus/ --output mafft-nexus-clean/
+
+# Build datasets with varying % completion
+phyluce_align_get_only_loci_with_min_taxa --alignments mafft-nexus-all-clean --taxa 38 --percent 0.50 --output mafft-nexus-all-50
+
+# Reformat nex for RAxML
+phyluce_align_format_nexus_files_for_raxml --alignments mafft-nexus-all-50 --output mafft-raxml
+phyluce_align_format_nexus_files_for_raxml --alignments mafft-nexus-slimy-75 --output mafft-raxml
+
+##########
+# USEFUL DATA
+##########
+
+# Extract taxa
+phyluce_align_extract_taxa_from_alignments --alignments mafft-nexus-slimy-clean --output mafft-nexus-slimy-clean-noOG --exclude LSUMZ2074
+phyluce_align_extract_taxa_from_alignments --alignments mafft-nexus-clean --output mafft-nexus-clean-noOG --exclude LSUMZ18530 LSUMZ18531
+
+# Get informative sites
+phyluce_align_get_informative_sites --alignments mafft-nexus-slimy-clean-noOG --output slimy_all_informative_sites --input-format nexus
+phyluce_align_get_informative_sites --alignments mafft-nexus-clean-noOG --output informative_sites_all_noOG --input-format nexus
+
+
+
+#########################################
+# POPULATION GENETICS - MIKE HARVEY
+# https://github.com/mgharvey/seqcap_pop
+#########################################
+# Requires Anaconda
+
+##########
+# 4. MAP READS TO CONTIGS (BWA)
+##########
+# Starting at Step 4, using CEN131.fasta (the most contigs matching to probes)
+# BWA already installed on SuperMikeII; add to path.
+# Use output from cleaned_reads_from_illumiprocessor
+# Output: 5-mapping/*.sa.sai and *.sam (BIG FILES)
+# This is for LSUMZ15568 (repeat for each individual)
+
+bwa aln popgen/cen131.fasta cleaned_reads_from_illumiprocessor/Pcinereus_LSUMZ15568/split-adapter-quality-trimmed/Pcinereus_LSUMZ15568-READ1.fastq.gz > popgen/5-mapping/Pcinereus_LSUMZ15568_read1.sa.sai
+bwa sampe popgen/cen131.fasta popgen/5-mapping/Pcinereus_LSUMZ15568_read1.sa.sai popgen/5-mapping/Pcinereus_LSUMZ15568_read2.sa.sai cleaned_reads_from_illumiprocessor/Pcinereus_LSUMZ15568/split-adapter-quality-trimmed/Pcinereus_LSUMZ15568-READ1.fastq.gz cleaned_reads_from_illumiprocessor/Pcinereus_LSUMZ15568/split-adapter-quality-trimmed/Pcinereus_LSUMZ15568-READ2.fastq.gz > popgen/5-mapping/Pcinereus_LSUMZ15568-aln.sam
+
+##########
+# 5. CONVERT .SAM TO .BAM (SAMTOOLS)
+##########
+# Output: 5-mapping/*.bam (BIG FILES)
+
+samtools view -bS popgen/5-mapping/Pcinereus_LSUMZ15568-aln.sam > popgen/5-mapping/Pcinereus_LSUMZ15568-aln.bam
+
+##########
+# 6. CLEAN THE BAM FILE (PICARD)
+##########
+# Output: 6_picard/*-aln_CL.bam (BIG FILES)
+
+java -jar ~/anaconda/jar/CleanSam.jar I=popgen/5-mapping/Pcinereus_LSUMZ15568-aln.bam O=popgen/6_picard/Pcinereus_LSUMZ15568-aln_CL.bam VALIDATION_STRINGENCY=SILENT
+
+##########
+# 7. ADD READ GROUPS (PICARD)
+##########
+# Output: 6_picard/*-aln_RG.bam (BIG FILES)
+
+java -Xmx2g -jar ~/anaconda/jar/AddOrReplaceReadGroups.jar I=popgen/6_picard/Pcinereus_LSUMZ15568-aln_CL.bam O=popgen/6_picard/Pcinereus_LSUMZ15568-aln_RG.bam SORT_ORDER=coordinate RGPL=illumina RGPU=TestXX RGLB=Lib1 RGID=Pcinereus_LSUMZ15568 RGSM=Pcinereus_LSUMZ15568 VALIDATION_STRINGENCY=LENIENT
+
+##########
+# 8. MARK PCR DUPLICATE READS (PICARD)
+##########
+# Output: 6_picard/*-aln_MD.bam (BIG FILES)
+
+java -Xmx2g -jar ~/anaconda/jar/MarkDuplicates.jar I=popgen/6_picard/Pcinereus_LSUMZ15568-aln_RG.bam O=popgen/6_picard/Pcinereus_LSUMZ15568-aln_MD.bam METRICS_FILE=popgen/6_picard/Pcinereus_LSUMZ15568.metrics MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=250 ASSUME_SORTED=true REMOVE_DUPLICATES=false
+
+##########
+# 9. MERGE BAM FILES across indvs within my species (PHYLUCE)
+##########
+# Start here to get new SNP dataset for different sets of samples!
+# Can choose which samples (BAM files) to include in merged BAM file.
+# Output: 7_merge-bams/Pserratus.bam (MASSIVE FILE, 30 GB, WOWWW!!!!!!!!!!!!!!!)
+
+java -Xmx2g -jar ~/anaconda/jar/MergeSamFiles.jar SO=coordinate AS=true I=popgen/6_picard/Pserratus_BDT042-aln_MD.bam I=popgen/6_picard/Pserratus_BDT044-aln_MD.bam I=popgen/6_picard/Pserratus_BDT051-aln_MD.bam I=popgen/6_picard/Pserratus_BDT054-aln_MD.bam I=popgen/6_picard/Pserratus_BDT057-aln_MD.bam I=popgen/6_picard/Pserratus_BDT058-aln_MD.bam I=popgen/6_picard/Pserratus_BDT060-aln_MD.bam I=popgen/6_picard/Pserratus_BDT062-aln_MD.bam I=popgen/6_picard/Pserratus_BDT063-aln_MD.bam I=popgen/6_picard/Pserratus_BDT064-aln_MD.bam I=popgen/6_picard/Pserratus_BDT075-aln_MD.bam I=popgen/6_picard/Pserratus_BDT076-aln_MD.bam I=popgen/6_picard/Pserratus_BDT077-aln_MD.bam I=popgen/6_picard/Pserratus_BDT079-aln_MD.bam I=popgen/6_picard/Pserratus_BDT080-aln_MD.bam I=popgen/6_picard/Pserratus_BDT081-aln_MD.bam I=popgen/6_picard/Pserratus_BDT082-aln_MD.bam I=popgen/6_picard/Pserratus_BDT083-aln_MD.bam I=popgen/6_picard/Pserratus_BDT084-aln_MD.bam I=popgen/6_picard/Pserratus_BDT085-aln_MD.bam I=popgen/6_picard/Pserratus_BDT087-aln_MD.bam I=popgen/6_picard/Pserratus_BDT089-aln_MD.bam I=popgen/6_picard/Pserratus_BDT092-aln_MD.bam I=popgen/6_picard/Pserratus_BDT093-aln_MD.bam I=popgen/6_picard/Pserratus_BDT094-aln_MD.bam I=popgen/6_picard/Pserratus_BDT095-aln_MD.bam I=popgen/6_picard/Pserratus_BDT098-aln_MD.bam I=popgen/6_picard/Pserratus_BDT100-aln_MD.bam I=popgen/6_picard/Pserratus_BDT101-aln_MD.bam I=popgen/6_picard/Pserratus_BDT103-aln_MD.bam I=popgen/6_picard/Pserratus_BDT109-aln_MD.bam I=popgen/6_picard/Pserratus_BDT111-aln_MD.bam I=popgen/6_picard/Pserratus_BDT113-aln_MD.bam I=popgen/6_picard/Pserratus_BDT114-aln_MD.bam I=popgen/6_picard/Pserratus_BDT118-aln_MD.bam I=popgen/6_picard/Pserratus_BDT123-aln_MD.bam I=popgen/6_picard/Pserratus_BDT132-aln_MD.bam I=popgen/6_picard/Pserratus_BDT134-aln_MD.bam I=popgen/6_picard/Pserratus_BDT135-aln_MD.bam I=popgen/6_picard/Pserratus_BDT139-aln_MD.bam I=popgen/6_picard/Pserratus_BDT142-aln_MD.bam I=popgen/6_picard/Pserratus_BDT145-aln_MD.bam I=popgen/6_picard/Pserratus_BDT148-aln_MD.bam I=popgen/6_picard/Pserratus_BDT149-aln_MD.bam I=popgen/6_picard/Pserratus_BDT153-aln_MD.bam I=popgen/6_picard/Pserratus_BDT157-aln_MD.bam I=popgen/6_picard/Pserratus_BDT161-aln_MD.bam I=popgen/6_picard/Pserratus_BDT163-aln_MD.bam I=popgen/6_picard/Pserratus_BDT164-aln_MD.bam I=popgen/6_picard/Pserratus_BDT166-aln_MD.bam I=popgen/6_picard/Pserratus_BDT168-aln_MD.bam I=popgen/6_picard/Pserratus_BDT169-aln_MD.bam I=popgen/6_picard/Pserratus_BDT173-aln_MD.bam I=popgen/6_picard/Pserratus_BDT174-aln_MD.bam I=popgen/6_picard/Pserratus_BDT175-aln_MD.bam I=popgen/6_picard/Pserratus_BDT177-aln_MD.bam I=popgen/6_picard/Pserratus_BDT178-aln_MD.bam I=popgen/6_picard/Pserratus_BDT179-aln_MD.bam I=popgen/6_picard/Pserratus_BDT180-aln_MD.bam I=popgen/6_picard/Pserratus_BDT181-aln_MD.bam I=popgen/6_picard/Pserratus_CEN131-aln_MD.bam I=popgen/6_picard/Pserratus_CEN1312-aln_MD.bam I=popgen/6_picard/Pserratus_CEN132-aln_MD.bam I=popgen/6_picard/Pserratus_CEN134-aln_MD.bam I=popgen/6_picard/Pserratus_CEN136-aln_MD.bam I=popgen/6_picard/Pserratus_CEN139-aln_MD.bam I=popgen/6_picard/Pserratus_CEN142-aln_MD.bam I=popgen/6_picard/Pserratus_ENR0165-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15253-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15535-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15547-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15548-aln_MD.bam I=popgen/6_picard/Pserratus_FHSM15549-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ18827-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ21037-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ21256-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ2558-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ2568-aln_MD.bam I=popgen/6_picard/Pserratus_LSUMZ2569-aln_MD.bam I=popgen/6_picard/Pserratus_MVZ145058-aln_MD.bam I=popgen/6_picard/Pserratus_MVZ145059-aln_MD.bam I=popgen/6_picard/Pserratus_OMNH40315-aln_MD.bam I=popgen/6_picard/Pserratus_OMNH41642-aln_MD.bam O=popgen/7_merge-bams/Pserratus.bam
+
+##########
+# 10. INDEX the MERGED BAM FILE (SAMTOOLS)
+##########
+
+samtools index popgen/7_merge-bams/Pserratus.bam
+
+##########
+# 11. CREATE DICTIONARY FROM REFERENCE CONTIGS (PICARD)
+##########
+# Output: popgen/CEN131.dict
+
+java -Xmx2g -jar ~/anaconda/pkgs/picard-1.106-0/jar/CreateSequenceDictionary.jar R=popgen/cen131.fasta O=popgen/cen131.dict
+
+##########
+# 12. INDEX the REFERENCE (SAMTOOLS)
+##########
+
+samtools faidx popgen/cen131.fasta
+
+##########
+# 13. CALL INDELS (GATK)
+##########
+# Output: 8_gatk/Pserratus.intervals
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T RealignerTargetCreator -R popgen/cen131.fasta -I popgen/7_merge-bams/Pserratus.bam --minReadsAtLocus 7 -o popgen/8_gatk/Pserratus.intervals
+
+##########
+# 14. REALIGN INDELS (GATK)
+##########
+# Output: 8_gatk/Pserratus_RI.bam
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T IndelRealigner -R popgen/cen131.fasta -I popgen/7_merge-bams/Pserratus.bam -targetIntervals popgen/8_gatk/Pserratus.intervals -LOD 3.0 -o popgen/8_gatk/Pserratus_RI.bam
+
+##########
+# 15. CALL SNPS (GATK)
+##########
+# Output: 8_gatk/Pserratus_raw_SNPs.vcf
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T UnifiedGenotyper -R popgen/cen131.fasta -I popgen/8_gatk/Pserratus_RI.bam -gt_mode DISCOVERY -o popgen/8_gatk/Pserratus_raw_SNPs.vcf -ploidy 2 -rf BadCigar
+
+##########
+# 16. ANNOTATE SNPS (GATK)
+##########
+# Output: 8_gatk/Pserratus_SNPs_annotated.vcf
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T VariantAnnotator -R popgen/cen131.fasta -I popgen/8_gatk/Pserratus_RI.bam -G StandardAnnotation -V:variant,VCF popgen/8_gatk/Pserratus_raw_SNPs.vcf -XA SnpEff -o popgen/8_gatk/Pserratus_SNPs_annotated.vcf -rf BadCigar
+
+##########
+# 17. ANNOTATE INDELS (GATK)
+##########
+# Output: 8_gatk/Pserratus_SNPs_indels.vcf
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T UnifiedGenotyper -R popgen/cen131.fasta -I popgen/8_gatk/Pserratus_RI.bam -gt_mode DISCOVERY -glm INDEL -o popgen/8_gatk/Pserratus_SNPs_indels.vcf -rf BadCigar
+
+##########
+# 18. MASK INDELS (GATK)
+##########
+# Output: 8_gatk/Pserratus_SNPs_no_indels.vcf
+# Add to command: --disable_auto_index_creation_and_locking_when_reading_rods
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T VariantFiltration -R popgen/cen131.fasta -V popgen/8_gatk/Pserratus_raw_SNPs.vcf --mask popgen/8_gatk/Pserratus_SNPs_indels.vcf --maskExtension 5 --maskName InDel --clusterWindowSize 10 --filterExpression "MQ0 >= 4 && ((MQ0 / (1.0 * DP)) > 0.1)" --filterName "BadValidation" --filterExpression "QUAL < 30.0" --filterName "LowQual" --filterExpression "QD < 5.0" --filterName "LowVQCBD" --disable_auto_index_creation_and_locking_when_reading_rods -o popgen/8_gatk/Pserratus_SNPs_no_indels.vcf -rf BadCigar
+
+##########
+# 19. RESTRICT TO HIGH-QUALITY SNPs (BASH)
+##########
+# Output: 8_gatk/Pserratus_SNPs_pass-only.vcf
+
+cat popgen/8_gatk/Pserratus_SNPs_no_indels.vcf | grep 'PASS\|^#' > popgen/8_gatk/Pserratus_SNPs_pass-only.vcf
+
+##########
+# 20. READ-BACKED PHASING (GATK)
+##########
+# Add same command option as step 18 if error on HPC.
+# Output: 8_gatk/Pserratus_SNPs_phased.vcf
+# USE THIS FILE FOR CONVERSION TO: Structure/Structurama, fastStructure, Adegenet, Genepop
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T ReadBackedPhasing -R popgen/cen131.fasta -I popgen/8_gatk/Pserratus_RI.bam --variant popgen/8_gatk/Pserratus_SNPs_pass-only.vcf -L popgen/8_gatk/Pserratus_SNPs_pass-only.vcf --disable_auto_index_creation_and_locking_when_reading_rods -o popgen/8_gatk/Pserratus_SNPs_phased.vcf --phaseQualityThresh 20.0 -rf BadCigar
+
+##########
+# 21. MAKE VCF FOR EACH SAMPLE (GATK)
+##########
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T SelectVariants -R popgen/cen131.fasta --variant popgen/8_gatk/Pserratus_SNPs_phased.vcf -o popgen/8_gatk/Pserratus_BDT042_SNPs.vcf -sn Pserratus_BDT042 -rf BadCigar
+
+##########
+# 22. MAKE TABLE OF PHASED SNPs FOR EACH SAMPLE (GATK)
+##########
+
+java -Xmx2g -jar ~/programs/GenomeAnalysisTK.jar -T VariantsToTable -R popgen/cen131.fasta -V popgen/8_gatk/Pserratus_BDT042_SNPs.vcf -F CHROM -F POS -F QUAL -GF GT -GF DP -GF HP -GF AD -o popgen/9_SNP-tables/Pserratus_BDT042_SNPs_phased-table.txt -rf BadCigar
+
+##########
+# 23. ADD PHASED SNPs to REFERENCE (SEQCAP_POP SCRIPT)
+##########
+
+python $HOME_DIR/programs/add_phased_snps_to_seqs_filter.py popgen/cen131.fasta popgen/9_SNP-tables/Pserratus_BDT042_SNPs_phased-table.txt popgen/10_sequences/Pserratus_BDT042_sequences.txt 1
+
+##########
+# 24. COLLATE SEQS FROM ALL INDVS INTO FILES BY UCE (SEQCAP_POP SCRIPT)
+##########
+
+python $HOME_DIR/programs/collate_sample_fastas_GATK.py popgen/10_sequences/ popgen/11_fasta-parts sequences.txt
+
+##########
+# FILE CONVERSION FOR PROGRAMS
+##########
+
+#Structure
+python $HOME_DIR/programs/structure_from_vcf.py popgen/8_gatk/Pserratus_SNPs_phased.vcf popgen/structure/Pserratus_structure.txt
+
+# FastStructure
+python $HOME_DIR/programs/faststructure_from_vcf_mod.py popgen/8_gatk/Pserratus_SNPs_phased.vcf popgen/structure/ Pserratus --first
+python faststructure_from_vcf_mod.py Plethodon2_SNPs_phased.vcf structure/ plethodon --all
+python faststructure_from_vcf_mod.py Plethodon2_SNPs_phased.vcf structure/ plethodon --random
+
+
+########################################################################
+# STRAUTO (SUBSAMPLE STRUCTURE FILES, PARALLELIZE STRUCTURE RUNS FOR HPC)
+########################################################################
+
+python sampleStructureFile.py -i slimy_structure_random_new_headers.str -o slimy_structure_random1k_2.str -f 1 -n 1000
+

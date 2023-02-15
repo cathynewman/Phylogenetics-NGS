@@ -1,0 +1,49 @@
+#!/bin/bash
+#PBS -q single
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=2:00:00
+#PBS -o gz_rename4.out
+#PBS -M cnewm15@tigers.lsu.edu
+#PBS -m ae
+#PBS -N gz_rename4
+#PBS -A hpc_herp01
+#PBS -e gz_rename4.err
+
+export HOME_DIR=/home/cenewman
+export WORK_DIR=/work/cenewman/rawdata/illumiprocessor/raw
+cd $WORK_DIR
+
+cp C6RLYANXX_s6_2_RapidGenomics_59_SL107511.fastq.gz SL107511_L006_R2_001.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_27_SL107479.fastq.gz SL107479_L006_R2_002.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_82_SL107534.fastq.gz SL107534_L006_R2_003.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_7_SL107459.fastq.gz SL107459_L006_R2_004.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_38_SL107490.fastq.gz SL107490_L006_R2_005.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_74_SL107526.fastq.gz SL107526_L006_R2_006.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_77_SL107529.fastq.gz SL107529_L006_R2_007.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_16_SL107468.fastq.gz SL107468_L006_R2_008.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_36_SL107488.fastq.gz SL107488_L006_R2_009.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_54_SL107506.fastq.gz SL107506_L006_R2_010.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_25_SL107477.fastq.gz SL107477_L006_R2_011.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_23_SL107475.fastq.gz SL107475_L006_R2_012.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_31_SL107483.fastq.gz SL107483_L006_R2_013.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_39_SL107491.fastq.gz SL107491_L006_R2_014.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_2_SL107454.fastq.gz SL107454_L006_R2_015.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_20_SL107472.fastq.gz SL107472_L006_R2_016.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_90_SL107542.fastq.gz SL107542_L006_R2_017.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_6_SL107458.fastq.gz SL107458_L006_R2_018.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_29_SL107481.fastq.gz SL107481_L006_R2_019.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_57_SL107509.fastq.gz SL107509_L006_R2_020.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_63_SL107515.fastq.gz SL107515_L006_R2_021.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_55_SL107507.fastq.gz SL107507_L006_R2_022.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_5_SL107457.fastq.gz SL107457_L006_R2_023.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_75_SL107527.fastq.gz SL107527_L006_R2_024.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_65_SL107517.fastq.gz SL107517_L006_R2_025.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_67_SL107519.fastq.gz SL107519_L006_R2_026.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_40_SL107492.fastq.gz SL107492_L006_R2_027.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_19_SL107471.fastq.gz SL107471_L006_R2_028.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_81_SL107533.fastq.gz SL107533_L006_R2_029.fastq.gz
+cp C6RLYANXX_s6_2_RapidGenomics_3_SL107455.fastq.gz SL107455_L006_R2_030.fastq.gz
+
+date
+
+exit 0
