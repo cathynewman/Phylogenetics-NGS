@@ -38,6 +38,7 @@ illumiprocessor --input rawdata --output cleaned_reads_from_illumiprocessor --co
 #############
 # requires Java 1.7 64-bit
 # creates thousands of temp files (auto deletes)
+# NOTE: DUE TO ABOVE, SEND APOLOGY-IN-ADVANCE EMAIL TO HPC@LSU TO EXPLAIN LACK OF CONTROL OVER # OF TEMP FILES. THEY WILL BE MAD BUT AGREE TO IT.
 # see https://github.com/faircloth-lab/phyluce/blob/master/docs/assembly.rst
 
 phyluce_assembly_assemblo_trinity --config phyluce_trinity.conf --output assemblies_trinity --subfolder split-adapter-quality-trimmed --clean --cores 16 --log-path log
