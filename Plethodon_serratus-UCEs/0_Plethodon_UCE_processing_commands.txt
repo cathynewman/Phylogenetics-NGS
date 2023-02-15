@@ -27,6 +27,7 @@ Use "conda info <package>" to see the dependencies for each package.
 #############
 # 1. ILLUMIPROCESSOR: QC & adapter/barcode trimming (local or HPC)
 #############
+# NOTE: DON'T RUN ZIP/UNZIP FOR BIG FILES ON HEAD NODE. IT'S INTENSIVE AND HPC@LSU WILL GET MAD!!!!!
 # input files need to be *.fastq.gz (cen_gzip.qsub)
 # input files renamed SLxxxxxx_L006_R1_###.fastq.gz or R2 (gz_file_rename_for_illumiprocessor.qsub)
 
